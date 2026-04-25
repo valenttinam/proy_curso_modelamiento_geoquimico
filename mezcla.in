@@ -1,0 +1,54 @@
+TITLE Karstificacion Litoral y Mezcla de Aguas
+
+# 1. Definir el Agua de Mar
+SOLUTION 1 Agua de Mar
+    units     mg/L
+    pH        8.18
+    temp      25
+    density   1.023
+    Na        10000
+    K         423
+    Mg        1180
+    Ca        410
+    Cl        17700
+    Alkalinity 180  as HCO3
+    S(6)      2610
+END
+
+# 2. Definir el Agua del Acuifero
+SOLUTION 2 Acuifero Calcareo
+    units     mg/L
+    pH        7.10
+    temp      25
+    density   1.000
+    Na        14
+    K         7
+    Mg        18
+    Ca        80
+    Cl        34
+    Alkalinity 253  as HCO3
+    S(6)      1.8
+END
+
+# 3. Configurar la salida de datos
+SELECTED_OUTPUT 1
+    -file                 resultados_mezcla.csv
+    -reset                false
+    -state                true
+    -ph                   true
+    -si                   calcite
+    -percent              true
+
+# 4. Realizar las mezclas (de 10% en 10%)
+# El primer numero es el indice de la solucion y el segundo es la fraccion
+MIX 1; 2 1.0; 1 0.0; END
+MIX 2; 2 0.9; 1 0.1; END
+MIX 3; 2 0.8; 1 0.2; END
+MIX 4; 2 0.7; 1 0.3; END
+MIX 5; 2 0.6; 1 0.4; END
+MIX 6; 2 0.5; 1 0.5; END
+MIX 7; 2 0.4; 1 0.6; END
+MIX 8; 2 0.3; 1 0.7; END
+MIX 9; 2 0.2; 1 0.8; END
+MIX 10; 2 0.1; 1 0.9; END
+MIX 11; 2 0.0; 1 1.0; END

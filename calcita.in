@@ -1,0 +1,29 @@
+TITLE Disolucion de Calcita: Sistema Cerrado vs Abierto
+
+# 1. Configurar la tabla de salida
+SELECTED_OUTPUT 1
+    -file                 resultados_calcita.csv
+    -reset                false
+    -state                true
+    -ph                   true
+    -molalities           Ca+2 HCO3-
+    -si                   CO2(g)
+
+# 2. Definir agua pura de partida
+SOLUTION 1 Agua pura
+    temp      25
+    water     1 # 1 kg de agua
+END
+
+# 3. SISTEMA CERRADO: Solo Calcita, sin aire
+USE solution 1
+EQUILIBRIUM_PHASES 1
+    Calcite 0 10
+END
+
+# 4. SISTEMA ABIERTO: Calcita + CO2 atmosferico (log PCO2 = -3.5)
+USE solution 1
+EQUILIBRIUM_PHASES 2
+    Calcite 0 10
+    CO2(g) -3.5 10
+END

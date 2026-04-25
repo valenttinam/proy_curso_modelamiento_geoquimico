@@ -1,0 +1,39 @@
+TITLE Efecto del Aumento de CO2 atmosferico sobre el oceano
+
+SELECTED_OUTPUT 1
+    -file                 resultados_co2.csv
+    -reset                false
+    -state                true
+    -ph                   true
+    -si                   calcite aragonite
+    -molalities           CO2 HCO3- CO3-2
+
+SOLUTION 1 Agua de mar estandar simplificada
+    temp      25
+    pH        8.22
+    pe        8.45
+    units     ppm
+    density   1.023
+    Ca        412.3
+    Mg        1290.0
+    Na        10768.0
+    K         399.1
+    Cl        19353.0
+    Alkalinity 141.68 as HCO3
+    S(6)      2712.0
+END
+
+USE solution 1
+EQUILIBRIUM_PHASES 1
+    CO2(g) -3.5 10
+END
+
+USE solution 1
+EQUILIBRIUM_PHASES 2
+    CO2(g) -3.25 10
+END
+
+USE solution 1
+EQUILIBRIUM_PHASES 3
+    CO2(g) -3.0 10
+END
